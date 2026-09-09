@@ -92,14 +92,12 @@ async function refreshRules() {
   // Tab gia' aperti su un dominio bloccato: le regole DNR non li toccano.
   await enforceOnOpenTabs(domains);
 
-  // Badge con il numero di siti bloccati in questo momento.
+  // Badge: solo "OFF" quando in pausa, altrimenti nessun badge.
   if (paused) {
     chrome.action.setBadgeText({ text: chrome.i18n.getMessage('badgeOff') });
     chrome.action.setBadgeBackgroundColor({ color: '#777' });
   } else {
-    const count = domains.length;
-    chrome.action.setBadgeText({ text: count > 0 ? String(count) : '' });
-    chrome.action.setBadgeBackgroundColor({ color: '#d33' });
+    chrome.action.setBadgeText({ text: '' });
   }
 
   // Un solo alarm, al prossimo istante in cui l'elenco dei domini cambia.
