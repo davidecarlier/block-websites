@@ -29,7 +29,7 @@ input[type="text"], input[type="time"], textarea {
   width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px;
   font: inherit; background: #fff; color: var(--text);
 }
-textarea { min-height: 70px; resize: vertical; }
+textarea { min-height: 140px; resize: vertical; line-height: 1.5; }
 .row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
 .row > div { flex: 1; min-width: 120px; }
 .days { display: flex; gap: 6px; flex-wrap: wrap; }
