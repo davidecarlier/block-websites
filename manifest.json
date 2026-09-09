@@ -1,21 +1,24 @@
 {
   "manifest_version": 3,
-  "name": "Blocco Siti a Orari",
+  "default_locale": "it",
+  "name": "__MSG_extName__",
   "version": "1.0.0",
-  "description": "Blocca i siti che scegli negli orari e nei giorni che imposti.",
+  "description": "__MSG_extDescription__",
   "permissions": [
     "storage",
     "alarms",
     "declarativeNetRequest",
     "tabs"
   ],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Blocco Siti a Orari",
+    "default_title": "__MSG_extName__",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
@@ -30,8 +33,12 @@
   "options_page": "options.html",
   "web_accessible_resources": [
     {
-      "resources": ["blocked.html"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "blocked.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }

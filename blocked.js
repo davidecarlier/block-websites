@@ -1,6 +1,7 @@
 (async () => {
+  localizePage();
   const params = new URLSearchParams(location.search);
-  const site = params.get('site') || 'Questo sito';
+  const site = params.get('site') || t('thisSite');
   document.getElementById('site').textContent = site;
 
   // L'URL originale è l'ultimo parametro e non è codificato (arriva da
@@ -30,10 +31,10 @@
     if (!stillBlocked) {
       if (originalUrl) {
         document.getElementById('resume').classList.add('ready');
-        document.getElementById('note').textContent = 'Blocco terminato, riapro la pagina...';
+        document.getElementById('note').textContent = t('resumeNow');
         setTimeout(() => location.replace(originalUrl), 1500);
       } else {
-        document.getElementById('until').textContent = 'Il blocco e\' terminato: puoi riprovare ad aprire il sito.';
+        document.getElementById('until').textContent = t('blockEnded');
       }
       return;
     }
@@ -41,7 +42,7 @@
     const matching = rules.filter((r) => isRuleActive(r, now) && r.sites.map(normalizeDomain).includes(site));
     if (matching.length > 0) {
       const ends = matching.map((r) => r.end).sort();
-      document.getElementById('until').textContent = `Sblocco previsto alle ${ends[ends.length - 1]}.`;
+      document.getElementById('until').textContent = t('unblockAt', [ends[ends.length - 1]]);
     }
     timer = setTimeout(check, 30000);
   }

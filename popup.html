@@ -31,15 +31,16 @@
 </head>
 <body>
   <div class="top">
-    <h1>Blocco Siti a Orari</h1>
-    <label class="toggle" title="Attiva o disattiva il blocco">
+    <h1 data-i18n="extName"></h1>
+    <label class="toggle" data-i18n-title="toggleTitle">
       <input type="checkbox" id="master">
       <span class="slider"></span>
     </label>
   </div>
   <div class="state" id="state"></div>
   <div id="content"></div>
-  <button id="options" class="primary" style="width:100%">Gestisci regole</button>
+  <button id="options" class="primary" style="width:100%" data-i18n="manageRules"></button>
+  <script src="i18n.js"></script>
   <script src="schedule.js"></script>
   <script src="popup.js"></script>
 </body>

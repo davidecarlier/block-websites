@@ -1,0 +1,60 @@
+{
+  "extName": { "message": "Website Time Blocker", "description": "Extension name" },
+  "extDescription": { "message": "Blocks the websites you choose at the times and on the days you set." },
+
+  "toggleTitle": { "message": "Turn blocking on or off" },
+  "manageRules": { "message": "Manage rules" },
+  "stateOn": { "message": "Blocking on" },
+  "stateOff": { "message": "Blocking off" },
+  "pausedInfo": { "message": "No websites are blocked while the switch is off." },
+  "nothingBlockedNow": { "message": "No websites are blocked right now." },
+  "rulesSummaryOne": {
+    "message": "$COUNT$ active rule, $TOTAL$ in total.",
+    "placeholders": { "count": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "rulesSummaryMany": {
+    "message": "$COUNT$ active rules, $TOTAL$ in total.",
+    "placeholders": { "count": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "sitesBlockedOne": { "message": "$COUNT$ website blocked now", "placeholders": { "count": { "content": "$1" } } },
+  "sitesBlockedMany": { "message": "$COUNT$ websites blocked now", "placeholders": { "count": { "content": "$1" } } },
+  "unnamedRule": { "message": "Unnamed" },
+
+  "optionsTitle": { "message": "Website Time Blocker – Settings" },
+  "optionsSubtitle": { "message": "Create one or more rules: each rule blocks a list of websites during a time range, on the days you choose." },
+  "newRule": { "message": "+ New rule" },
+  "saved": { "message": "Saved" },
+  "noRules": { "message": "No rules yet. Click \"New rule\" to get started." },
+  "ruleNamePlaceholder": { "message": "Rule name (e.g. Work hours)" },
+  "enabled": { "message": "Enabled" },
+  "sitesLabel": { "message": "Websites to block (one per line or comma-separated)" },
+  "sitesHint": { "message": "All subdomains are blocked too (e.g. m.facebook.com)." },
+  "fromLabel": { "message": "From" },
+  "toLabel": { "message": "To" },
+  "overnightHint": { "message": "If \"To\" is earlier than \"From\", the range spans midnight." },
+  "daysLabel": { "message": "Days" },
+  "dayMon": { "message": "Mon" },
+  "dayTue": { "message": "Tue" },
+  "dayWed": { "message": "Wed" },
+  "dayThu": { "message": "Thu" },
+  "dayFri": { "message": "Fri" },
+  "daySat": { "message": "Sat" },
+  "daySun": { "message": "Sun" },
+  "deleteRule": { "message": "Delete rule" },
+  "confirmDelete": { "message": "Delete this rule?" },
+  "statusBlocking": { "message": "Blocking now" },
+  "statusWaiting": { "message": "Waiting" },
+  "statusDisabled": { "message": "Disabled" },
+  "sampleRuleName": { "message": "Work hours" },
+
+  "blockedTitle": { "message": "Website blocked" },
+  "thisSite": { "message": "This website" },
+  "notAvailable": { "message": "is not available during this time range." },
+  "resumeLabel": { "message": "Page you were visiting" },
+  "resumeNote": { "message": "When the block ends, this page will reopen automatically." },
+  "resumeNow": { "message": "Block ended, reopening the page..." },
+  "blockEnded": { "message": "The block has ended: you can try opening the website again." },
+  "unblockAt": { "message": "Unblocks at $TIME$.", "placeholders": { "time": { "content": "$1" } } },
+
+  "badgeOff": { "message": "OFF" }
+}

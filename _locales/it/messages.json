@@ -1,0 +1,60 @@
+{
+  "extName": { "message": "Blocco Siti a Orari", "description": "Nome dell'estensione" },
+  "extDescription": { "message": "Blocca i siti che scegli negli orari e nei giorni che imposti." },
+
+  "toggleTitle": { "message": "Attiva o disattiva il blocco" },
+  "manageRules": { "message": "Gestisci regole" },
+  "stateOn": { "message": "Blocco attivo" },
+  "stateOff": { "message": "Blocco disattivato" },
+  "pausedInfo": { "message": "Nessun sito viene bloccato finché l'interruttore è spento." },
+  "nothingBlockedNow": { "message": "Nessun sito bloccato in questo momento." },
+  "rulesSummaryOne": {
+    "message": "$COUNT$ regola attiva, $TOTAL$ in totale.",
+    "placeholders": { "count": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "rulesSummaryMany": {
+    "message": "$COUNT$ regole attive, $TOTAL$ in totale.",
+    "placeholders": { "count": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "sitesBlockedOne": { "message": "$COUNT$ sito bloccato ora", "placeholders": { "count": { "content": "$1" } } },
+  "sitesBlockedMany": { "message": "$COUNT$ siti bloccati ora", "placeholders": { "count": { "content": "$1" } } },
+  "unnamedRule": { "message": "Senza nome" },
+
+  "optionsTitle": { "message": "Blocco Siti a Orari – Impostazioni" },
+  "optionsSubtitle": { "message": "Crea una o più regole: ogni regola blocca un elenco di siti in una fascia oraria, nei giorni scelti." },
+  "newRule": { "message": "+ Nuova regola" },
+  "saved": { "message": "Salvato" },
+  "noRules": { "message": "Nessuna regola. Clicca \"Nuova regola\" per iniziare." },
+  "ruleNamePlaceholder": { "message": "Nome regola (es. Orario di lavoro)" },
+  "enabled": { "message": "Attiva" },
+  "sitesLabel": { "message": "Siti da bloccare (uno per riga o separati da virgola)" },
+  "sitesHint": { "message": "Vengono bloccati anche tutti i sottodomini (es. m.facebook.com)." },
+  "fromLabel": { "message": "Dalle" },
+  "toLabel": { "message": "Alle" },
+  "overnightHint": { "message": "Se \"Alle\" è prima di \"Dalle\", la fascia passa la mezzanotte." },
+  "daysLabel": { "message": "Giorni" },
+  "dayMon": { "message": "Lun" },
+  "dayTue": { "message": "Mar" },
+  "dayWed": { "message": "Mer" },
+  "dayThu": { "message": "Gio" },
+  "dayFri": { "message": "Ven" },
+  "daySat": { "message": "Sab" },
+  "daySun": { "message": "Dom" },
+  "deleteRule": { "message": "Elimina regola" },
+  "confirmDelete": { "message": "Eliminare questa regola?" },
+  "statusBlocking": { "message": "Bloccando ora" },
+  "statusWaiting": { "message": "In attesa" },
+  "statusDisabled": { "message": "Disattivata" },
+  "sampleRuleName": { "message": "Orario di lavoro" },
+
+  "blockedTitle": { "message": "Sito bloccato" },
+  "thisSite": { "message": "Questo sito" },
+  "notAvailable": { "message": "non è disponibile in questa fascia oraria." },
+  "resumeLabel": { "message": "Pagina che stavi visitando" },
+  "resumeNote": { "message": "Quando il blocco finisce, questa pagina si riaprirà da sola." },
+  "resumeNow": { "message": "Blocco terminato, riapro la pagina..." },
+  "blockEnded": { "message": "Il blocco è terminato: puoi riprovare ad aprire il sito." },
+  "unblockAt": { "message": "Sblocco previsto alle $TIME$.", "placeholders": { "time": { "content": "$1" } } },
+
+  "badgeOff": { "message": "OFF" }
+}

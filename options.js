@@ -4,6 +4,8 @@ const savedEl = document.getElementById('saved');
 let rules = [];
 let saveTimer = null;
 
+localizePage();
+
 async function load() {
   const data = await chrome.storage.sync.get({ rules: [] });
   rules = data.rules;
@@ -13,7 +15,11 @@ async function load() {
 function render() {
   listEl.innerHTML = '';
   if (rules.length === 0) {
-    listEl.innerHTML = '<p class="hint">Nessuna regola. Clicca "Nuova regola" per iniziare.</p>';
+    listEl.innerHTML = '';
+    const p = document.createElement('p');
+    p.className = 'hint';
+    p.textContent = t('noRules');
+    listEl.appendChild(p);
     return;
   }
   for (const rule of rules) listEl.appendChild(renderRule(rule));
@@ -21,6 +27,7 @@ function render() {
 
 function renderRule(rule) {
   const node = template.content.firstElementChild.cloneNode(true);
+  localizePage(node);
   const q = (sel) => node.querySelector(sel);
 
   q('.name').value = rule.name || '';
@@ -53,7 +60,7 @@ function renderRule(rule) {
   });
 
   q('.delete').addEventListener('click', () => {
-    if (!confirm('Eliminare questa regola?')) return;
+    if (!confirm(t('confirmDelete'))) return;
     rules = rules.filter((r) => r.id !== rule.id);
     render();
     scheduleSave();
@@ -65,7 +72,7 @@ function renderRule(rule) {
 function updateStatus(node, rule) {
   const el = node.querySelector('.status');
   const active = isRuleActive(rule);
-  el.textContent = active ? 'Bloccando ora' : (rule.enabled ? 'In attesa' : 'Disattivata');
+  el.textContent = t(active ? 'statusBlocking' : (rule.enabled ? 'statusWaiting' : 'statusDisabled'));
   el.classList.toggle('on', active);
   node.classList.toggle('active', active);
 }

@@ -14,7 +14,7 @@ chrome.runtime.onInstalled.addListener(async () => {
     await chrome.storage.sync.set({
       rules: [{
         id: crypto.randomUUID(),
-        name: 'Orario di lavoro',
+        name: chrome.i18n.getMessage('sampleRuleName'),
         sites: ['facebook.com', 'instagram.com', 'youtube.com'],
         days: [1, 2, 3, 4, 5],
         start: '09:00',
@@ -94,7 +94,7 @@ async function refreshRules() {
 
   // Badge con il numero di siti bloccati in questo momento.
   if (paused) {
-    chrome.action.setBadgeText({ text: 'OFF' });
+    chrome.action.setBadgeText({ text: chrome.i18n.getMessage('badgeOff') });
     chrome.action.setBadgeBackgroundColor({ color: '#777' });
   } else {
     const count = domains.length;

@@ -2,17 +2,17 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Blocco Siti a Orari – Impostazioni</title>
+  <title data-i18n="optionsTitle">Blocco Siti a Orari – Impostazioni</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Blocco Siti a Orari</h1>
-    <p class="subtitle">Crea una o piu regole: ogni regola blocca un elenco di siti in una fascia oraria, nei giorni scelti.</p>
+    <h1 data-i18n="extName"></h1>
+    <p class="subtitle" data-i18n="optionsSubtitle"></p>
 
     <div class="toolbar">
-      <button id="add" class="primary">+ Nuova regola</button>
-      <span id="saved" class="saved">Salvato</span>
+      <button id="add" class="primary" data-i18n="newRule"></button>
+      <span id="saved" class="saved" data-i18n="saved"></span>
     </div>
 
     <div id="rules"></div>
@@ -20,48 +20,49 @@
     <template id="rule-template">
       <div class="card">
         <div class="card-header">
-          <input type="text" class="name" placeholder="Nome regola (es. Orario di lavoro)">
+          <input type="text" class="name" data-i18n-placeholder="ruleNamePlaceholder">
           <span class="status"></span>
-          <label class="switch"><input type="checkbox" class="enabled"> Attiva</label>
+          <label class="switch"><input type="checkbox" class="enabled"> <span data-i18n="enabled"></span></label>
         </div>
         <div class="row">
           <div style="flex: 2 1 100%">
-            <label>Siti da bloccare (uno per riga o separati da virgola)</label>
+            <label data-i18n="sitesLabel"></label>
             <textarea class="sites" placeholder="facebook.com&#10;youtube.com&#10;twitter.com"></textarea>
-            <div class="hint">Vengono bloccati anche tutti i sottodomini (es. m.facebook.com).</div>
+            <div class="hint" data-i18n="sitesHint"></div>
           </div>
         </div>
         <div class="row">
           <div>
-            <label>Dalle</label>
+            <label data-i18n="fromLabel"></label>
             <input type="time" class="start" value="09:00">
           </div>
           <div>
-            <label>Alle</label>
+            <label data-i18n="toLabel"></label>
             <input type="time" class="end" value="18:00">
-            <div class="hint">Se "Alle" è prima di "Dalle", la fascia passa la mezzanotte.</div>
+            <div class="hint" data-i18n="overnightHint"></div>
           </div>
         </div>
         <div class="row">
           <div>
-            <label>Giorni</label>
+            <label data-i18n="daysLabel"></label>
             <div class="days">
-              <label><input type="checkbox" value="1"><span>Lun</span></label>
-              <label><input type="checkbox" value="2"><span>Mar</span></label>
-              <label><input type="checkbox" value="3"><span>Mer</span></label>
-              <label><input type="checkbox" value="4"><span>Gio</span></label>
-              <label><input type="checkbox" value="5"><span>Ven</span></label>
-              <label><input type="checkbox" value="6"><span>Sab</span></label>
-              <label><input type="checkbox" value="0"><span>Dom</span></label>
+              <label><input type="checkbox" value="1"><span data-i18n="dayMon"></span></label>
+              <label><input type="checkbox" value="2"><span data-i18n="dayTue"></span></label>
+              <label><input type="checkbox" value="3"><span data-i18n="dayWed"></span></label>
+              <label><input type="checkbox" value="4"><span data-i18n="dayThu"></span></label>
+              <label><input type="checkbox" value="5"><span data-i18n="dayFri"></span></label>
+              <label><input type="checkbox" value="6"><span data-i18n="daySat"></span></label>
+              <label><input type="checkbox" value="0"><span data-i18n="daySun"></span></label>
             </div>
           </div>
         </div>
         <div class="actions">
-          <button class="delete danger">Elimina regola</button>
+          <button class="delete danger" data-i18n="deleteRule"></button>
         </div>
       </div>
     </template>
   </div>
+  <script src="i18n.js"></script>
   <script src="schedule.js"></script>
   <script src="options.js"></script>
 </body>

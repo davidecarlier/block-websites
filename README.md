@@ -34,3 +34,15 @@ Il badge sull'icona mostra quanti siti sono bloccati in questo momento.
 - `options.html/js` – pagina di configurazione
 - `popup.html/js` – popup con lo stato corrente
 - `blocked.html/js` – pagina mostrata al posto del sito bloccato
+- `i18n.js` – helper che traduce le pagine HTML (`data-i18n`, `data-i18n-placeholder`, `data-i18n-title`)
+- `_locales/<lingua>/messages.json` – stringhe tradotte
+
+## Traduzioni
+
+L'estensione usa `chrome.i18n`: la lingua segue quella dell'interfaccia di Chrome, con fallback
+sull'italiano (`default_locale`). Sono incluse italiano (`it`) e inglese (`en`).
+
+Per aggiungere una lingua copia `_locales/en/messages.json` in `_locales/<codice>/messages.json`
+e traduci i valori `message`, lasciando invariate le chiavi e i placeholder (`$COUNT$`, `$TIME$`...).
+
+Per provare un'altra lingua avvia Chrome con `--lang=en` oppure cambia la lingua in `chrome://settings/languages`.
