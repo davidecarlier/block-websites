@@ -1,0 +1,33 @@
+# Blocco Siti a Orari
+
+Estensione Chrome (Manifest V3) che blocca un elenco di siti in fasce orarie e giorni configurabili.
+
+## Installazione
+
+1. Apri `chrome://extensions`
+2. Attiva **Modalita sviluppatore** (in alto a destra)
+3. Clicca **Carica estensione non pacchettizzata** e seleziona questa cartella
+
+## Uso
+
+- Clicca l'icona dell'estensione: l'interruttore in alto spegne e riaccende tutto il blocco al volo (badge "OFF" quando è spento). Da li' **Gestisci regole** (oppure tasto destro > Opzioni).
+- Ogni regola ha: nome, elenco di siti, orario "Dalle / Alle", giorni della settimana e un interruttore Attiva.
+- I sottodomini vengono bloccati automaticamente (`facebook.com` blocca anche `m.facebook.com`).
+- Se "Alle" è precedente a "Dalle" la fascia attraversa la mezzanotte (es. 22:00 -> 06:00).
+- La pagina di blocco mostra il link alla pagina che stavi visitando e la riapre da sola quando la fascia finisce.
+- Le regole si sincronizzano tra i tuoi Chrome tramite `chrome.storage.sync`.
+
+## Come funziona
+
+Il service worker ricalcola ogni minuto quali siti sono in fascia di blocco e aggiorna le regole
+dinamiche di `declarativeNetRequest`, che reindirizzano la navigazione verso `blocked.html`.
+Il badge sull'icona mostra quanti siti sono bloccati in questo momento.
+
+## File
+
+- `manifest.json` – configurazione estensione
+- `background.js` – service worker: alarm + regole DNR
+- `schedule.js` – logica condivisa degli orari
+- `options.html/js` – pagina di configurazione
+- `popup.html/js` – popup con lo stato corrente
+- `blocked.html/js` – pagina mostrata al posto del sito bloccato
