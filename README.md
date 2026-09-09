@@ -19,8 +19,11 @@ Estensione Chrome (Manifest V3) che blocca un elenco di siti in fasce orarie e g
 
 ## Come funziona
 
-Il service worker ricalcola ogni minuto quali siti sono in fascia di blocco e aggiorna le regole
-dinamiche di `declarativeNetRequest`, che reindirizzano la navigazione verso `blocked.html`.
+Il service worker calcola quali siti sono in fascia di blocco e aggiorna le regole dinamiche di
+`declarativeNetRequest`, che reindirizzano la navigazione verso `blocked.html`. Poi programma un solo
+alarm al prossimo cambio di fascia e resta a riposo: niente timer periodici.
+In piu' controlla i tab aperti (`chrome.tabs`) e reindirizza anche quelli: serve per i tab gia' aperti
+quando inizia la fascia e per i siti serviti dal proprio service worker (es. x.com), che non passano dalla rete.
 Il badge sull'icona mostra quanti siti sono bloccati in questo momento.
 
 ## File

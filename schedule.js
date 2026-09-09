@@ -47,6 +47,22 @@ function activeDomains(rules, now = new Date()) {
   return [...set].filter(Boolean);
 }
 
+/**
+ * Primo istante (allineato al minuto) in cui l'insieme dei domini bloccati
+ * cambia rispetto ad adesso, oppure null se non cambia nei prossimi 7 giorni.
+ * Serve a programmare un solo alarm invece di uno al minuto.
+ */
+function nextTransition(rules, now = new Date()) {
+  const current = activeDomains(rules, now).sort().join('\n');
+  const t = new Date(now);
+  t.setSeconds(0, 0);
+  for (let i = 0; i < 7 * 24 * 60; i++) {
+    t.setMinutes(t.getMinutes() + 1);
+    if (activeDomains(rules, t).sort().join('\n') !== current) return new Date(t);
+  }
+  return null;
+}
+
 /** Pulisce l'input utente: rimuove protocollo, www., percorso, spazi. */
 function normalizeDomain(input) {
   let d = String(input || '').trim().toLowerCase();
@@ -57,5 +73,5 @@ function normalizeDomain(input) {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = { isRuleActive, activeDomains, normalizeDomain, toMinutes };
+  module.exports = { isRuleActive, activeDomains, normalizeDomain, toMinutes, nextTransition };
 }
