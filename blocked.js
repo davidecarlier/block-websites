@@ -29,6 +29,10 @@
     );
 
     if (!stillBlocked) {
+      // Prima di riaprire il sito chiede al service worker di riallineare le
+      // regole di blocco: se fossero ancora installate quelle della fascia
+      // appena scaduta, il sito verrebbe rimandato qui in un loop infinito.
+      try { await chrome.runtime.sendMessage({ type: 'refresh' }); } catch {}
       if (originalUrl) {
         document.getElementById('resume').classList.add('ready');
         document.getElementById('note').textContent = t('resumeNow');

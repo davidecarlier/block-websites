@@ -59,14 +59,18 @@ async function refreshRules() {
   const now = new Date();
   const domains = paused ? [] : activeDomains(rules, now);
 
-  const previous = await getCachedDomains();
-  const changed = !sameSet(previous, domains);
   cachedDomains = domains;
   await chrome.storage.session.set({ domains });
 
-  // Le regole DNR vengono riscritte solo se l'elenco dei domini e' cambiato.
+  // Le regole DNR vengono riscritte solo se differiscono da quelle realmente
+  // installate. Il confronto si fa sulle regole vere e non sulla cache: le
+  // regole dinamiche sopravvivono al riavvio del browser mentre la cache no,
+  // e una cache ricalcolata "adesso" farebbe credere che nulla sia cambiato
+  // lasciando attive regole di blocco ormai scadute.
+  const existing = await chrome.declarativeNetRequest.getDynamicRules();
+  const installed = existing.map(domainFromRule).filter(Boolean);
+  const changed = existing.length !== installed.length || !sameSet(installed, domains);
   if (changed) {
-    const existing = await chrome.declarativeNetRequest.getDynamicRules();
     const removeRuleIds = existing.map((r) => r.id);
     const blockedPage = chrome.runtime.getURL('blocked.html');
     const addRules = domains.map((domain, i) => ({
@@ -144,6 +148,14 @@ function blockedDomainFor(url, domains) {
 function redirectTab(tabId, url, domain) {
   const target = `${chrome.runtime.getURL('blocked.html')}?site=${encodeURIComponent(domain)}&url=${url}`;
   chrome.tabs.update(tabId, { url: target }).catch(() => {});
+}
+
+/** Ricava il dominio bloccato da una regola DNR dinamica installata. */
+function domainFromRule(rule) {
+  const sub = rule?.action?.redirect?.regexSubstitution || '';
+  const m = sub.match(/[?&]site=([^&]*)/);
+  if (!m) return null;
+  try { return decodeURIComponent(m[1]); } catch { return null; }
 }
 
 function sameSet(a, b) {
